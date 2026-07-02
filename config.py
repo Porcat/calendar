@@ -15,7 +15,7 @@ SHOW_FESTIVAL = True      # 节日（后面实现）
 SHOW_COUNTDOWN = True     # 倒计时（后面实现）
 
 # 📁 输出路径
-OUTPUT_FILE = "output/china_calendar.ics"
+OUTPUT_FILE = "calendar.ics"
 
 # 🕒 时区（先不用，后面扩展）
 TIMEZONE = "Asia/Shanghai"
