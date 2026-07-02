@@ -26,7 +26,6 @@ WEEK_MAP = {
 # 农历系统
 # =========================
 def get_lunar_info(current):
-
     solar = Solar.fromYmd(current.year, current.month, current.day)
     lunar = solar.getLunar()
 
@@ -62,7 +61,7 @@ def generate_ics():
         zodiac = get_zodiac(current.month, current.day)
         weekday = WEEK_MAP[current.weekday()]
 
-        # ===== 节气（专业版）=====
+        # ===== 节气 =====
         solar_term = get_solar_term_by_date(current)
 
         # ===== 农历 =====
@@ -85,7 +84,7 @@ def generate_ics():
         solar_name, solar_days = get_next_solar_term(current)
 
         # =========================
-        # SUMMARY（精简显示）
+        # SUMMARY
         # =========================
         if solar_term:
             summary = f"{zodiac}｜{solar_term}"
@@ -93,7 +92,7 @@ def generate_ics():
             summary = f"{zodiac}"
 
         # =========================
-        # DESCRIPTION（完整信息）
+        # DESCRIPTION
         # =========================
         description = (
             f"日期:{current}\n"
@@ -118,6 +117,7 @@ def generate_ics():
 
     ics_lines.append("END:VCALENDAR")
 
+    # ✅ 核心修改点：输出到根目录
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("\n".join(ics_lines))
 
